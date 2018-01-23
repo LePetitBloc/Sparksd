@@ -36,39 +36,7 @@ RUN mkdir /sparks_data /sparks_backup /sparks_log
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Sentinel
-RUN apt-get update -y \ 
-	&& apt-get install -y \
-	virtualenv \
-	python \
-	python-dev \
-	python-virtualenv
-
-RUN cd / \
-	&& mkdir /sentinel \
-	&& git clone https://github.com/sparkscrypto/sentinel.git sentinel \
-	&& cd sentinel \
-	&& export LC_ALL=C \
-	&& virtualenv ./venv \
-	&& ./venv/bin/pip install -r requirements.txt
-
-COPY ./sentinel.conf /sentinel/sentinel.conf
-
-# Install Cron 
-RUN apt-get install -y -qq --no-install-recommends cron	
-
-# Add crontab file
-COPY ./crontab /etc/cron.d/sentinel
-
-# Give execution rights on the cron job
-RUN chmod 644 /etc/cron.d/sentinel
-
-# Fix crontab crash caused by FS Overlay
-# http://stackoverflow.com/questions/21926465/issues-running-cron-in-docker-on-different-hosts
-# Comment "session    required   pam_loginuid.so"
-RUN sed -i '/session    required     pam_loginuid.so/c\#session    required     pam_loginuid.so' /etc/pam.d/cron
-
 # Define working directory
 WORKDIR /Sparks/src
 
-CMD /entrypoint.sh 
+CMD /entrypoint.sh
