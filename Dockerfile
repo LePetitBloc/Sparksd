@@ -31,12 +31,9 @@ RUN USE_UPNP=1 \
     && ./configure  CPPFLAGS="-I/usr/local/db4/include -O2" LDFLAGS="-L/usr/local/db4/lib" \
     && make
 
-RUN mkdir /sparks_data /sparks_backup /sparks_log
-
-COPY ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN mkdir /sparks/data /sparks/backup /sparks/log
 
 # Define working directory
 WORKDIR /Sparks/src
 
-CMD ./Sparksd -reindex --datadir=/sparks_data/ --conf=/root/.Sparks/Sparks.conf
+CMD ["./Sparksd", "-reindex", "--datadir=/sparks/data", "--conf=/sparks/conf"]
