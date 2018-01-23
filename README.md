@@ -1,5 +1,5 @@
-# sparks-docker
-Sparks wallet docker
+# sparks
+Sparks wallet Docker container.
 > See https://github.com/blocksheep/sparks-sentinel for a Sparks sentinel docker container.
 
 # Usage
