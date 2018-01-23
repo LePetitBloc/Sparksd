@@ -31,7 +31,7 @@ RUN USE_UPNP=1 \
     && ./configure  CPPFLAGS="-I/usr/local/db4/include -O2" LDFLAGS="-L/usr/local/db4/lib" \
     && make
 
-RUN mkdir -p /sparks/data /sparks/backup /sparks/log
+RUN mkdir -p /sparks/data /sparks/backup /sparks/log /sparks/conf
 
 # Define working directory
 WORKDIR /Sparks/src
