@@ -53,9 +53,6 @@ RUN cd / \
 	&& ./venv/bin/pip install -r requirements.txt
 
 COPY ./sentinel.conf /sentinel/sentinel.conf
-	
-# Install rsyslog 
-RUN apt-get install -y -qq --no-install-recommends rsyslog
 
 # Install Cron 
 RUN apt-get install -y -qq --no-install-recommends cron	
