@@ -8,4 +8,4 @@ Sparks wallet docker
 
 # Authors
 
-Original created by @phpgeekfr & @Phylante
+Originally created by @phpgeekfr & @Phylante
