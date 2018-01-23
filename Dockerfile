@@ -50,7 +50,7 @@ RUN cd / \
 	&& virtualenv ./venv \
 	&& ./venv/bin/pip install -r requirements.txt
 
-COPY ./src/sentinel.conf /sentinel/sentinel.conf
+COPY ./sentinel.conf /sentinel/sentinel.conf
 	
 # Install rsyslog 
 RUN apt-get install -y -qq --no-install-recommends rsyslog
