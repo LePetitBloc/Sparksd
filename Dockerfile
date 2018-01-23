@@ -38,9 +38,11 @@ RUN chmod +x /entrypoint.sh
 
 # Sentinel
 RUN apt-get update -y \ 
-	&& apt-get install -y virtualenv \
-	&& apt-get install -y python \
-	&& apt-get -y install python-virtualenv
+	&& apt-get install -y \
+	virtualenv \
+	python \
+	python-dev \
+	python-virtualenv
 
 RUN cd / \
 	&& mkdir /sentinel \
