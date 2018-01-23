@@ -64,9 +64,9 @@ COPY ./src/crontab /etc/cron.d/sentinel
 # Give execution rights on the cron job
 RUN chmod 644 /etc/cron.d/sentinel
 
-# Fix la crontab qui plante à cause du FS Overlay
+# Fix crontab crash caused by FS Overlay
 # http://stackoverflow.com/questions/21926465/issues-running-cron-in-docker-on-different-hosts
-# commente "session    required   pam_loginuid.so"
+# Comment "session    required   pam_loginuid.so"
 RUN sed -i '/session    required     pam_loginuid.so/c\#session    required     pam_loginuid.so' /etc/pam.d/cron
 
 # Define working directory
