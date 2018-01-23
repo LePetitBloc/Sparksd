@@ -1,0 +1,1 @@
+* * * * * cd /home/sparks1/.Sparks/sentinel && ./venv/bin/python bin/sentinel.py 2>&1 >> sentinel-cron.log

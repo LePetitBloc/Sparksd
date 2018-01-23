@@ -61,7 +61,7 @@ RUN apt-get install -y -qq --no-install-recommends rsyslog
 RUN apt-get install -y -qq --no-install-recommends cron	
 
 # Add crontab file
-COPY ./src/crontab /etc/cron.d/sentinel
+COPY ./crontab /etc/cron.d/sentinel
 
 # Give execution rights on the cron job
 RUN chmod 644 /etc/cron.d/sentinel
