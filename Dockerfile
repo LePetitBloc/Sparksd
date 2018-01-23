@@ -31,9 +31,7 @@ RUN USE_UPNP=1 \
     && ./configure  CPPFLAGS="-I/usr/local/db4/include -O2" LDFLAGS="-L/usr/local/db4/lib" \
     && make
 
-RUN mkdir /sparks_data
-RUN mkdir /sparks_backup
-RUN mkdir /sparks_log
+RUN mkdir /sparks_data /sparks_backup /sparks_log
 
 COPY ./src/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
