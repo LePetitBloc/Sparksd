@@ -1,2 +1,11 @@
 # sparks-docker
-Sparks wallet and master-node docker
+
+Sparks wallet docker
+
+# Usage
+
+`docker build .`
+
+# Authors
+
+Original created by @phpgeekfr & @Phylante
