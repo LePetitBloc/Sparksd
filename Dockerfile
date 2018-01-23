@@ -6,11 +6,9 @@ RUN Deps='libevent-dev libssl-dev libboost-system-dev libboost-filesystem-dev li
     DB4FILE=$DB4VERSION".tar.gz" \
     DB4URL="http://download.oracle.com/berkeley-db/"$DB4FILE \
     DB4HASH=12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef \
-    && set -x \
-    && set -e \
+    && set -xe \
     && apt-get update -y && apt-get install -y $buildDeps $Deps --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
-
     && wget $DB4URL \
     && echo "$DB4HASH $DB4FILE" | sha256sum -c - \
     && tar -xzvf $DB4FILE \
@@ -25,13 +23,13 @@ RUN Deps='libevent-dev libssl-dev libboost-system-dev libboost-filesystem-dev li
 RUN USE_UPNP=1 \
     && git clone https://github.com/sparkscrypto/Sparks.git Sparks \
     && cd Sparks \
+    && chmod +x autogen.sh share/genbuild.sh src/leveldb/build_detect_platform \
     && ./autogen.sh \
     && export BDB_INCLUDE_PATH="/usr/local/db4/include" \
     && export BDB_LIB_PATH="/usr/local/db4/lib" \
     && ln -s /usr/local/db4/lib/libdb-4.8.so /usr/lib/libdb-4.8.so \
     && ./configure  CPPFLAGS="-I/usr/local/db4/include -O2" LDFLAGS="-L/usr/local/db4/lib" \
     && make
-
 
 RUN mkdir /sparks_data
 RUN mkdir /sparks_backup
