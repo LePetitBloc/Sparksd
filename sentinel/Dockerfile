@@ -16,3 +16,7 @@ RUN cd / \
 	&& ./venv/bin/pip install -r requirements.txt
 
 COPY ./sentinel/sentinel.conf /sentinel/sentinel.conf
+
+ENV SENTINEL_DEBUG 1
+
+CMD ./venv/bin/python bin/sentinel.py

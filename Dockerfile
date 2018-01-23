@@ -39,4 +39,4 @@ RUN chmod +x /entrypoint.sh
 # Define working directory
 WORKDIR /Sparks/src
 
-CMD /entrypoint.sh
+CMD ./Sparksd -reindex --datadir=/sparks_data/ --conf=/root/.Sparks/Sparks.conf
