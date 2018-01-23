@@ -33,7 +33,7 @@ RUN USE_UPNP=1 \
 
 RUN mkdir /sparks_data /sparks_backup /sparks_log
 
-COPY ./src/entrypoint.sh /entrypoint.sh
+COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Sentinel
