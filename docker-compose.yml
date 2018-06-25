@@ -1,0 +1,31 @@
+version: '3'
+services:
+  wallet:
+    image: 'lepetitbloc/sparksd:v0.12.3.2'
+    restart: always
+    ports:
+      - '8890:8890'
+      - '8892:8892'
+    command:
+      - '-rpcuser=sparks-wallet'
+      - '-rpcpassword=uxwuvl94'
+      - '-server=1'
+      - '-listen=0'
+    volumes:
+      - './wallet/:/home/sparks/'
+  masternode:
+    image: 'lepetitbloc/sparksd:v0.12.3.2'
+    restart: always
+    ports:
+      - '8890:8890'
+      - '8892:8892'
+    command:
+      - '-rpcuser=sparks-mn01'
+      - '-rpcpassword=uxwuvl94'
+      - '-rpcallowip=::/0'
+      - '-server=0'
+      - '-listen=1'
+      - '-masternode=1'
+      - '-masternodeprivkey=YourMasternodePrivKey'
+    volumes:
+      - './masternode/:/home/sparks/'
